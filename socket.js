@@ -17,6 +17,14 @@ io.on("connection", (socket) => {
       conversationId: data.conversationId,
     });
   });
+  socket.on("wanttobefriend", (data) => {
+    io.to(data.userName).to(data.userNameFriend).emit("requestfriend", null);
+  });
+  socket.on("acceptrequestfriend", (data) => {
+    io.to(data.userName)
+      .to(data.userNameFriend)
+      .emit("acceptedrequestfriend", null);
+  });
 });
 instrument(io, {
   auth: false,
