@@ -1,11 +1,16 @@
 const io = require("socket.io")(3002, {
   cors: {
-    origin: ["http://localhost:3000", "https://admin.socket.io"],
+    origin: [
+      "http://localhost:3000",
+      "https://admin.socket.io",
+      "https://zalo-client.vercel.app",
+    ],
   },
 });
 const { instrument } = require("@socket.io/admin-ui");
 
 io.on("connection", (socket) => {
+  console.log("Client connect with id " + socket.id);
   socket.on("joinrooms", (roomIds) => {
     roomIds &&
       roomIds.forEach(async (roomId) => {
