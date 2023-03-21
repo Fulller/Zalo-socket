@@ -3,7 +3,7 @@ const io = require("socket.io")(3002, {
     origin: [
       "http://localhost:3000",
       "https://admin.socket.io",
-      "https://zalo-client.vercel.app",
+      "https://zalohe.vercel.app",
     ],
   },
 });
