@@ -30,6 +30,16 @@ io.on("connection", (socket) => {
       .to(data.userNameFriend)
       .emit("acceptedrequestfriend", null);
   });
+  socket.on("updateinfo", (data) => {
+    for (let friend of data.friends) {
+      io.to(friend.userName).emit("friendupdateinfo", data.userName);
+    }
+  });
+  socket.on("recallmessage", (data) => {
+    io.to(data.userNameFriend).emit("friendrecallmessage", {
+      message: data.message,
+    });
+  });
 });
 instrument(io, {
   auth: false,
