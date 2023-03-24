@@ -4,6 +4,7 @@ const io = require("socket.io")(3002, {
       "http://localhost:3000",
       "https://admin.socket.io",
       "https://zalohe.vercel.app",
+      "https://zalo-client-fulller.vercel.app",
     ],
   },
 });
