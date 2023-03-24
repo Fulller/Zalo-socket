@@ -41,6 +41,11 @@ io.on("connection", (socket) => {
       message: data.message,
     });
   });
+  socket.on("seenmessage", (data) => {
+    io.to(data.userNameFriend).emit("friendseenmessage", {
+      message: data.message,
+    });
+  });
 });
 instrument(io, {
   auth: false,
