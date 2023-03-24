@@ -35,6 +35,11 @@ io.on("connection", (socket) => {
       io.to(friend.userName).emit("friendupdateinfo", data.userName);
     }
   });
+  socket.on("recallmessage", (data) => {
+    io.to(data.userNameFriend).emit("friendrecallmessage", {
+      message: data.message,
+    });
+  });
 });
 instrument(io, {
   auth: false,
